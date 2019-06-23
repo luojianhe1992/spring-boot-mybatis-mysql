@@ -1,0 +1,19 @@
+spec:
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: springboot-mybatis-mysql
+  template:
+    metadata:
+      labels:
+        app: springboot-mybatis-mysql
+    spec:
+      containers:
+      - name: springboot-mybatis-mysql
+        image: luojianhe1992/springboot-mybatis-mysql
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        imagePullPolicy: IfNotPresent
+      restartPolicy: Always
