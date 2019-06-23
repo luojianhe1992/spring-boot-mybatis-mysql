@@ -109,11 +109,11 @@ public class DBIngestionUtil {
 	}
 
 	public static void main(String[] args) {
-		// List<Employee> employeeList = EmployeeGenerator.generateEmployeeList(50);
-		// DBIngestionUtil.ingestEmployeeList(employeeList);
+		 List<Employee> employeeList = EmployeeGenerator.generateEmployeeList(50);
+		 DBIngestionUtil.ingestEmployeeList(employeeList);
 
-		List<News> newsList = NewsGenerator.generateNewsList(50);
-		DBIngestionUtil.ingestNewsList(newsList);
+//		List<News> newsList = NewsGenerator.generateNewsList(50);
+//		DBIngestionUtil.ingestNewsList(newsList);
 	}
 
 }
