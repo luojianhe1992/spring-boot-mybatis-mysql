@@ -6,7 +6,9 @@ import java.util.List;
 import java.util.Properties;
 
 import com.ibm.domain.Employee;
+import com.ibm.domain.News;
 import com.ibm.util.generator.EmployeeGenerator;
+import com.ibm.util.generator.NewsGenerator;
 
 import java.sql.*;
 
@@ -59,7 +61,7 @@ public class DBIngestionUtil {
 		System.out.println("Goodbye!");
 	}
 
-	public static void ingestNewsList(List<Employee> employeeList) {
+	public static void ingestNewsList(List<News> newsList) {
 		Connection connection = null;
 		Statement stmt = null;
 		try {
@@ -76,10 +78,10 @@ public class DBIngestionUtil {
 			System.out.println("Inserting records into the table...");
 			stmt = connection.createStatement();
 
-			for (Employee employee : employeeList) {
-				String sql = "INSERT INTO employee " + "VALUES ('" + employee.getId() + "', '" + employee.getName()
-						+ "', '" + employee.getLocation() + "', '" + employee.getRole() + "', '"
-						+ employee.getDepartment() + "', '" + employee.getInterests() + "')";
+			for (News news : newsList) {
+				String sql = "INSERT INTO news " + "VALUES ('" + news.getId() + "', '" + news.getTitle() + "', '"
+						+ news.getAbstraction() + "', '" + news.getLanguage() + "', '" + news.getPublicationDate()
+						+ "', '" + news.getAuthor() + "', '" + news.getTopics() + "')";
 				System.out.println("sql = " + sql);
 				stmt.executeUpdate(sql);
 			}
@@ -109,6 +111,9 @@ public class DBIngestionUtil {
 	public static void main(String[] args) {
 		// List<Employee> employeeList = EmployeeGenerator.generateEmployeeList(50);
 		// DBIngestionUtil.ingestEmployeeList(employeeList);
+
+		List<News> newsList = NewsGenerator.generateNewsList(50);
+		DBIngestionUtil.ingestNewsList(newsList);
 	}
 
 }
