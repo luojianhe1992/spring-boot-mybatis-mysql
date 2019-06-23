@@ -12,7 +12,7 @@ import com.ibm.domain.Employee;
 
 @Mapper
 public interface EmployeeDao {
-	
+
 	@Insert("insert into employee(id, name, location, role, department) values (#{id}, #{name}, #{location}, #{role}, #{department})")
 	void addEmployee(Employee employee);
 
@@ -31,6 +31,9 @@ public interface EmployeeDao {
 	@Select("SELECT id, name, location, role, department FROM employee where name=#{name}")
 	Employee findEmployeeByName(String name);
 
-	@Select("SELECT id, name, location, role, department FROM employee")
+	@Select("SELECT id, name, location, role, department, interests FROM employee where interests like CONCAT('%',CONCAT(#{interest}, '%'))")
+	List<Employee> findEmployeeByInterest(String interest);
+
+	@Select("SELECT id, name, location, role, department, interests FROM employee")
 	List<Employee> findAllEmployee();
 }

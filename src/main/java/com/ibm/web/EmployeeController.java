@@ -21,38 +21,43 @@ public class EmployeeController {
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public boolean addEmployee(@RequestBody Employee employee) {
-		System.out.println("开始新增...");
 		return employeeService.addEmployee(employee);
 	}
 
 	@RequestMapping(value = "/update", method = RequestMethod.PUT)
 	public boolean updateEmployee(@RequestBody Employee employee) {
-		System.out.println("开始更新...");
 		return employeeService.updateEmployee(employee);
 	}
 
 	@RequestMapping(value = "/deleteById", method = RequestMethod.DELETE)
 	public boolean deleteEmployeeById(@RequestParam(value = "id", required = true) String id) {
-		System.out.println("开始删除...");
 		return employeeService.deleteEmployeeById(id);
 	}
 
 	@RequestMapping(value = "/deleteByName", method = RequestMethod.DELETE)
 	public boolean deleteEmployeeByName(@RequestParam(value = "name", required = true) String name) {
-		System.out.println("开始删除...");
 		return employeeService.deleteEmployeeByName(name);
 	}
 
 	@RequestMapping(value = "/findById", method = RequestMethod.GET)
 	public Employee findEmployeeById(@RequestParam(value = "id", required = true) String id) {
-		System.out.println("开始查询...");
 		return employeeService.findEmployeeById(id);
 	}
 
 	@RequestMapping(value = "/findByName", method = RequestMethod.GET)
 	public Employee findEmployeeByName(@RequestParam(value = "name", required = true) String name) {
-		System.out.println("开始查询...");
 		return employeeService.findEmployeeByName(name);
+	}
+
+	/**
+	 * find by interest
+	 * 
+	 * @param interest
+	 * @return
+	 */
+	@RequestMapping(value = "/findByInterest", method = RequestMethod.GET)
+	public List<Employee> findEmployeeByInterest(@RequestParam(value = "interest", required = true) String interest) {
+		return employeeService.findEmployeeByInterest(interest);
 	}
 
 	@RequestMapping(value = "/findAll", method = RequestMethod.GET)

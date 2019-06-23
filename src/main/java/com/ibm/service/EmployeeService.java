@@ -69,6 +69,15 @@ public class EmployeeService {
 	public Employee findEmployeeByName(String name) {
 		return employeeDao.findEmployeeByName(name);
 	}
+	
+	/**
+	 * find by interest
+	 * @param interest
+	 * @return
+	 */
+	public List<Employee> findEmployeeByInterest(String interest) {
+		return employeeDao.findEmployeeByInterest(interest);
+	}
 
 	public List<Employee> findAllEmployee() {
 		return employeeDao.findAllEmployee();
