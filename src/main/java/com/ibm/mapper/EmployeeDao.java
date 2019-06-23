@@ -13,10 +13,10 @@ import com.ibm.domain.Employee;
 @Mapper
 public interface EmployeeDao {
 
-	@Insert("insert into employee(id, name, location, role, department) values (#{id}, #{name}, #{location}, #{role}, #{department})")
+	@Insert("insert into employee(id, name, location, role, department, interests) values (#{id}, #{name}, #{location}, #{role}, #{department}, #{interests})")
 	void addEmployee(Employee employee);
 
-	@Update("update employee set name=#{name}, location=#{location}, role=#{role}, department=#{department} where id=#{id}")
+	@Update("update employee set name=#{name}, location=#{location}, role=#{role}, department=#{department} interests=#{interests} where id=#{id}")
 	void updateEmployee(Employee employee);
 
 	@Delete("delete from employee where id=#{id}")
@@ -25,11 +25,11 @@ public interface EmployeeDao {
 	@Delete("delete from employee where name=#{name}")
 	void deleteEmployeeByName(String name);
 
-	@Select("SELECT id, name, location, role, department FROM employee where id=#{id}")
+	@Select("SELECT id, name, location, role, department, interests FROM employee where id=#{id}")
 	Employee findEmployeeById(String id);
 
-	@Select("SELECT id, name, location, role, department FROM employee where name=#{name}")
-	Employee findEmployeeByName(String name);
+	@Select("SELECT id, name, location, role, department, interests FROM employee where name=#{name}")
+	List<Employee> findEmployeeByName(String name);
 
 	@Select("SELECT id, name, location, role, department, interests FROM employee where interests like CONCAT('%',CONCAT(#{interest}, '%'))")
 	List<Employee> findEmployeeByInterest(String interest);

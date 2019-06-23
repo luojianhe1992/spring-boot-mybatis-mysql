@@ -63,11 +63,15 @@ public class NewsService {
 		return flag;
 	}
 
-	public News findNewsByTitle(String title) {
+	public News findNewsById(String id) {
+		return newsDao.findNewsById(id);
+	}
+
+	public List<News> findNewsByTitle(String title) {
 		return newsDao.findNewsByTitle(title);
 	}
 
-	public News findNewsByPublicationDate(Date publicationDate) {
+	public List<News> findNewsByPublicationDate(Date publicationDate) {
 		return newsDao.findNewsByPublicationDate(publicationDate);
 	}
 

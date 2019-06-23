@@ -22,45 +22,45 @@ public class NewsController {
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public boolean addNews(@RequestBody News news) {
-		System.out.println("开始新增...");
 		return newsService.addNews(news);
 	}
 
 	@RequestMapping(value = "/update", method = RequestMethod.PUT)
 	public boolean updateNews(@RequestBody News news) {
-		System.out.println("开始更新...");
 		return newsService.updateNews(news);
 	}
 
 	@RequestMapping(value = "/deleteByTitle", method = RequestMethod.DELETE)
 	public boolean deleteNewsByTitle(@RequestParam(value = "title", required = true) String title) {
-		System.out.println("开始删除...");
 		return newsService.deleteNewsByTitle(title);
 	}
 
 	@RequestMapping(value = "/deleteByPublicationDate", method = RequestMethod.DELETE)
-	public boolean deleteNewsByPublicationDate(@RequestParam(value = "publication_date", required = true) String publicationDateStr) {
-		System.out.println("开始删除...");
+	public boolean deleteNewsByPublicationDate(
+			@RequestParam(value = "publication_date", required = true) String publicationDateStr) {
 		Date publicationDate = Date.valueOf(publicationDateStr);
 		return newsService.deleteNewsByPublicationDate(publicationDate);
 	}
 
+	@RequestMapping(value = "/findById", method = RequestMethod.GET)
+	public News findNewsById(@RequestParam(value = "id", required = true) String id) {
+		return newsService.findNewsById(id);
+	}
+
 	@RequestMapping(value = "/findByTitle", method = RequestMethod.GET)
-	public News findNewsByTitle(@RequestParam(value = "title", required = true) String title) {
-		System.out.println("开始查询...");
+	public List<News> findNewsByTitle(@RequestParam(value = "title", required = true) String title) {
 		return newsService.findNewsByTitle(title);
 	}
 
 	@RequestMapping(value = "/findByPublicationDate", method = RequestMethod.GET)
-	public News findNewsByPublicationDate(@RequestParam(value = "publication_date", required = true) String publicationDateStr) {
-		System.out.println("开始查询...");
+	public List<News> findNewsByPublicationDate(
+			@RequestParam(value = "publication_date", required = true) String publicationDateStr) {
 		Date publicationDate = Date.valueOf(publicationDateStr);
 		return newsService.findNewsByPublicationDate(publicationDate);
 	}
 
 	@RequestMapping(value = "/findAll", method = RequestMethod.GET)
 	public List<News> findAllNews() {
-		System.out.println("开始查询所有数据...");
 		return newsService.findAllNews();
 	}
 }

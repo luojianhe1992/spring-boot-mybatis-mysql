@@ -20,7 +20,6 @@ public class EmployeeService {
 			employeeDao.addEmployee(employee);
 			flag = true;
 		} catch (Exception e) {
-			System.out.println("新增失败!");
 			e.printStackTrace();
 		}
 		return flag;
@@ -32,7 +31,6 @@ public class EmployeeService {
 			employeeDao.updateEmployee(employee);
 			flag = true;
 		} catch (Exception e) {
-			System.out.println("修改失败!");
 			e.printStackTrace();
 		}
 		return flag;
@@ -44,7 +42,6 @@ public class EmployeeService {
 			employeeDao.deleteEmployeeById(id);
 			flag = true;
 		} catch (Exception e) {
-			System.out.println("删除失败!");
 			e.printStackTrace();
 		}
 		return flag;
@@ -56,7 +53,6 @@ public class EmployeeService {
 			employeeDao.deleteEmployeeByName(name);
 			flag = true;
 		} catch (Exception e) {
-			System.out.println("删除失败!");
 			e.printStackTrace();
 		}
 		return flag;
@@ -66,12 +62,13 @@ public class EmployeeService {
 		return employeeDao.findEmployeeById(id);
 	}
 
-	public Employee findEmployeeByName(String name) {
+	public List<Employee> findEmployeeByName(String name) {
 		return employeeDao.findEmployeeByName(name);
 	}
-	
+
 	/**
 	 * find by interest
+	 * 
 	 * @param interest
 	 * @return
 	 */

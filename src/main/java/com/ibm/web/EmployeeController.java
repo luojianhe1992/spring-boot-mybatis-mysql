@@ -45,7 +45,7 @@ public class EmployeeController {
 	}
 
 	@RequestMapping(value = "/findByName", method = RequestMethod.GET)
-	public Employee findEmployeeByName(@RequestParam(value = "name", required = true) String name) {
+	public List<Employee> findEmployeeByName(@RequestParam(value = "name", required = true) String name) {
 		return employeeService.findEmployeeByName(name);
 	}
 
